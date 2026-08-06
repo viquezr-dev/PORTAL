@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Proyectos | Raúl Víquez</title>
+    <!-- Importar fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables de colores en tonos pastel */
+        :root {
+            --primary-color: #6366f1; /* Tono principal suave (Índigo suave) */
+            --bg-color: #f8fafc; /* Fondo general muy claro */
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --accent-color: #a5b4fc; /* Azul pastel */
+            --hover-border: #818cf8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Encabezado */
+        header {
+            background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%); /* Degradado pastel suave */
+            color: #312e81;
+            text-align: center;
+            padding: 3.5rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0.6rem 0 0;
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
+        /* Contenedor Principal */
+        main {
+            flex: 1;
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Cuadrícula de tarjetas */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Estilos de las Tarjetas */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 25px -5px rgba(99, 102, 241, 0.08), 0 8px 10px -6px rgba(99, 102, 241, 0.08);
+            border-color: var(--hover-border);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: #1e1b4b;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Botones de enlace en tono pastel */
+        .card-link {
+            margin-top: auto;
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #3730a3;
+            text-align: center;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .card-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .developer-name {
+            font-weight: 600;
+            color: #4f46e5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Directorio de Proyectos</h1>
+        <p>Herramientas y Sistemas de Panamá</p>
+    </header>
+
+    <main>
+        <div class="grid-container">
+            
+            <!-- Tarjeta 1 -->
+            <div class="card">
+                <h2>Generador de Códigos Postales</h2>
+                <p>Herramienta para la generación y consulta de códigos postales en el territorio nacional.</p>
+                <a href="https://viquezr-dev.github.io/panama-GEN/" class="card-link" target="_blank">Ir al Generador</a>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="card">
+                <h2>Sistemas Postales de Panamá</h2>
+                <p>Plataforma dedicada a la gestión y visualización de la red postal panameña.</p>
+                <a href="https://viquezr-dev.github.io/codigos_postales/" class="card-link" target="_blank">Ver Sistema</a>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="card">
+                <h2>Centros Educativos de Panamá</h2>
+                <p>Directorio y ubicación espacial de los centros educativos a nivel nacional.</p>
+                <a href="https://viquezr-dev.github.io/antenas_panama/" class="card-link" target="_blank">Explorar Centros</a>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="card">
+                <h2>Seguimiento a UPM-EML</h2>
+                <p>Sistema de control y seguimiento para el proyecto UPM-EML del año 2026.</p>
+                <a href="https://viquezr-dev.github.io/UPM_2026/" class="card-link" target="_blank">Ver Seguimiento</a>
+            </div>
+
+            <!-- Tarjeta 5 -->
+            <div class="card">
+                <h2>Datos Territoriales de Panamá</h2>
+                <p>Plataforma integral de información y mapas sobre el ordenamiento territorial.</p>
+                <a href="https://viquezr-dev.github.io/panama_territorio/index.html" class="card-link" target="_blank">Consultar Datos</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Diseñado y desarrollado por: <span class="developer-name">Raúl Víquez</span> &copy; 2026</p>
+    </footer>
+
+</body>
+</html>

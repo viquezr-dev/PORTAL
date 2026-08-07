@@ -7,135 +7,188 @@
     <!-- Importar fuente de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Variables de colores en tonos pastel */
-        :root {
-            --primary-color: #6366f1; /* Tono principal suave (Índigo suave) */
-            --bg-color: #f8fafc; /* Fondo general muy claro */
-            --card-bg: #ffffff;
-            --text-main: #334155;
-            --text-muted: #64748b;
-            --accent-color: #a5b4fc; /* Azul pastel */
-            --hover-border: #818cf8;
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Bloqueo de pantalla completa sin desplazamiento */
+        html, body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-main);
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            justify-content: space-between;
         }
 
         /* Encabezado */
         header {
-            background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%); 
-            color: #312e81;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: #1e293b;
             text-align: center;
-            padding: 3.5rem 1rem;
-            border-bottom: 1px solid #e2e8f0;
+            padding: 1.2rem 1rem;
+            border-bottom: 1px solid #cbd5e1;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
         }
 
         header p {
-            margin: 0.6rem 0 0;
-            font-size: 1.1rem;
-            color: #4b5563;
+            margin: 0.2rem 0 0;
+            font-size: 0.85rem;
+            color: #64748b;
         }
 
         /* Contenedor Principal */
         main {
             flex: 1;
-            padding: 3rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            max-width: 1050px;
             width: 100%;
-            box-sizing: border-box;
         }
 
-        /* Cuadrícula de tarjetas */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Estilos de las Tarjetas */
+        /* Estilos base de las Tarjetas */
         .card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border-radius: 14px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
-            border: 1px solid #e2e8f0;
+            border: 1px solid transparent;
+            width: calc(31% - 1rem);
+            min-width: 260px;
         }
 
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 25px -5px rgba(99, 102, 241, 0.08), 0 8px 10px -6px rgba(99, 102, 241, 0.08);
-            border-color: var(--hover-border);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
         }
 
         .card h2 {
             margin-top: 0;
-            font-size: 1.25rem;
-            color: #1e1b4b;
-            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
         }
 
         .card p {
-            margin-bottom: 2rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            margin: 0 0 1rem 0;
+            line-height: 1.4;
+            color: #475569;
+            font-size: 0.82rem;
+            flex-grow: 1;
         }
 
-        /* Botones de enlace en tono pastel */
+        /* Estilo base de los botones */
         .card-link {
-            margin-top: auto;
-            display: inline-block;
-            background-color: #e0e7ff;
-            color: #3730a3;
+            display: block;
             text-align: center;
-            padding: 0.8rem 1.5rem;
+            padding: 0.55rem 1rem;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 8px;
+            font-size: 0.82rem;
             font-weight: 600;
             transition: background-color 0.2s, color 0.2s;
         }
 
-        .card-link:hover {
-            background-color: var(--primary-color);
-            color: white;
+        /* --- COLORES PASTEL POR TEMÁTICA --- */
+
+        /* 1. Códigos Postales - Azul CIelo */
+        .card-postal-gen {
+            background-color: #f0f9ff;
+            border-color: #bae6fd;
         }
+        .card-postal-gen h2 { color: #0369a1; }
+        .card-postal-gen .card-link { background-color: #e0f2fe; color: #0284c7; }
+        .card-postal-gen .card-link:hover { background-color: #0284c7; color: #ffffff; }
+
+        /* 2. Sistemas Postales - Ámbar / Melocotón */
+        .card-postal-sys {
+            background-color: #fffbeb;
+            border-color: #fde68a;
+        }
+        .card-postal-sys h2 { color: #b45309; }
+        .card-postal-sys .card-link { background-color: #fef3c7; color: #d97706; }
+        .card-postal-sys .card-link:hover { background-color: #d97706; color: #ffffff; }
+
+        /* 3. Centros Educativos - Verde Menta */
+        .card-edu {
+            background-color: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+        .card-edu h2 { color: #15803d; }
+        .card-edu .card-link { background-color: #dcfce7; color: #16a34a; }
+        .card-edu .card-link:hover { background-color: #16a34a; color: #ffffff; }
+
+        /* 4. UPM-EML - Lavanda / Violeta */
+        .card-upm {
+            background-color: #faf5ff;
+            border-color: #e9d5ff;
+        }
+        .card-upm h2 { color: #6b21a8; }
+        .card-upm .card-link { background-color: #f3e8ff; color: #7e22ce; }
+        .card-upm .card-link:hover { background-color: #7e22ce; color: #ffffff; }
+
+        /* 5. Datos Territoriales - Coral / Terracota */
+        .card-territorio {
+            background-color: #fff1f2;
+            border-color: #fecdd3;
+        }
+        .card-territorio h2 { color: #be123c; }
+        .card-territorio .card-link { background-color: #ffe4e6; color: #e11d48; }
+        .card-territorio .card-link:hover { background-color: #e11d48; color: #ffffff; }
 
         /* Pie de página */
         footer {
             background-color: #f1f5f9;
-            color: var(--text-muted);
+            color: #64748b;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: auto;
+            padding: 0.75rem;
             border-top: 1px solid #e2e8f0;
         }
 
         footer p {
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
         
         .developer-name {
             font-weight: 600;
-            color: #4f46e5;
+            color: #334155;
+        }
+
+        /* Adaptación para pantallas de baja resolución */
+        @media (max-height: 700px) {
+            header { padding: 0.8rem 1rem; }
+            header h1 { font-size: 1.3rem; }
+            .card { padding: 0.9rem; }
+            .card p { font-size: 0.78rem; margin-bottom: 0.6rem; }
+            .flex-container { gap: 0.8rem; }
+        }
+
+        @media (max-width: 768px) {
+            html, body { overflow: auto; height: auto; }
+            .card { width: 100%; }
         }
     </style>
 </head>
@@ -147,40 +200,40 @@
     </header>
 
     <main>
-        <div class="grid-container">
+        <div class="flex-container">
             
-            <!-- Tarjeta 1 -->
-            <div class="card">
+            <!-- Tarjeta 1 (Azul Cielo) -->
+            <div class="card card-postal-gen">
                 <h2>Generador de Códigos Postales</h2>
-                <p>Herramienta para la generación y consulta de códigos postales en el territorio nacional.</p>
+                <p>Generación y consulta de códigos postales nacionales.</p>
                 <a href="https://viquezr-dev.github.io/panama-GEN/" class="card-link" target="_blank">Ir al Generador</a>
             </div>
 
-            <!-- Tarjeta 2 -->
-            <div class="card">
+            <!-- Tarjeta 2 (Ámbar) -->
+            <div class="card card-postal-sys">
                 <h2>Sistemas Postales de Panamá</h2>
-                <p>Plataforma dedicada a la gestión y visualización de la red postal panameña.</p>
+                <p>Gestión y visualización de la red postal panameña.</p>
                 <a href="https://viquezr-dev.github.io/codigos_postales/" class="card-link" target="_blank">Ver Sistema</a>
             </div>
 
-            <!-- Tarjeta 3 -->
-            <div class="card">
+            <!-- Tarjeta 3 (Verde Menta) -->
+            <div class="card card-edu">
                 <h2>Centros Educativos de Panamá</h2>
-                <p>Directorio y ubicación espacial de los centros educativos a nivel nacional.</p>
+                <p>Ubicación espacial del directorio de centros educativos.</p>
                 <a href="https://viquezr-dev.github.io/antenas_panama/" class="card-link" target="_blank">Explorar Centros</a>
             </div>
 
-            <!-- Tarjeta 4 -->
-            <div class="card">
+            <!-- Tarjeta 4 (Lavanda) -->
+            <div class="card card-upm">
                 <h2>Seguimiento a UPM-EML</h2>
-                <p>Sistema de control y seguimiento para el proyecto UPM-EML del año 2026.</p>
+                <p>Control y seguimiento del proyecto UPM-EML 2026.</p>
                 <a href="https://viquezr-dev.github.io/UPM_2026/" class="card-link" target="_blank">Ver Seguimiento</a>
             </div>
 
-            <!-- Tarjeta 5 -->
-            <div class="card">
+            <!-- Tarjeta 5 (Coral) -->
+            <div class="card card-territorio">
                 <h2>Datos Territoriales de Panamá</h2>
-                <p>Plataforma integral de información y mapas sobre el ordenamiento territorial.</p>
+                <p>Plataforma de mapas y ordenamiento territorial.</p>
                 <a href="https://viquezr-dev.github.io/panama_territorio/index.html" class="card-link" target="_blank">Consultar Datos</a>
             </div>
 
@@ -190,5 +243,6 @@
     <footer>
         <p>Diseñado y desarrollado por: <span class="developer-name">Raúl Víquez</span> &copy; 2026</p>
     </footer>
+
 </body>
 </html>

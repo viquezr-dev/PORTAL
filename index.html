@@ -11,7 +11,7 @@
             box-sizing: border-box;
         }
 
-        /* Bloqueo de pantalla completa sin desplazamiento */
+        /* Pantalla completa sin barra de desplazamiento en escritorio */
         html, body {
             height: 100vh;
             margin: 0;
@@ -28,24 +28,24 @@
             justify-content: space-between;
         }
 
-        /* Encabezado */
+        /* Encabezado compacto */
         header {
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             color: #1e293b;
             text-align: center;
-            padding: 1.1rem 1rem;
+            padding: 0.9rem 1rem;
             border-bottom: 1px solid #cbd5e1;
         }
 
         header h1 {
             margin: 0;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
         }
 
         header p {
-            margin: 0.2rem 0 0;
-            font-size: 0.85rem;
+            margin: 0.15rem 0 0;
+            font-size: 0.82rem;
             color: #64748b;
         }
 
@@ -55,47 +55,47 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 0.8rem 1rem;
         }
 
         .flex-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.1rem;
-            max-width: 1100px;
+            gap: 0.9rem;
+            max-width: 1150px;
             width: 100%;
         }
 
         /* Estilos base de las Tarjetas */
         .card {
-            border-radius: 14px;
-            padding: 1.1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            border-radius: 12px;
+            padding: 0.95rem;
+            box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.03);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
             border: 1px solid transparent;
-            width: calc(33.333% - 1.1rem); /* 3 columnas */
-            min-width: 250px;
+            width: calc(25% - 0.9rem); /* 4 por fila en pantallas anchas */
+            min-width: 230px;
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.08);
         }
 
         .card h2 {
             margin-top: 0;
-            font-size: 1.02rem;
-            margin-bottom: 0.4rem;
+            font-size: 0.98rem;
+            margin-bottom: 0.35rem;
         }
 
         .card p {
-            margin: 0 0 0.9rem 0;
+            margin: 0 0 0.8rem 0;
             line-height: 1.35;
             color: #475569;
-            font-size: 0.81rem;
+            font-size: 0.78rem;
             flex-grow: 1;
         }
 
@@ -103,10 +103,10 @@
         .card-link {
             display: block;
             text-align: center;
-            padding: 0.5rem 1rem;
+            padding: 0.48rem 0.8rem;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.81rem;
+            border-radius: 7px;
+            font-size: 0.78rem;
             font-weight: 600;
             transition: background-color 0.2s, color 0.2s;
         }
@@ -158,7 +158,7 @@
         .card-territorio .card-link { background-color: #ffe4e6; color: #e11d48; }
         .card-territorio .card-link:hover { background-color: #e11d48; color: #ffffff; }
 
-        /* 6. Análisis Socioeconómico - Turquesa / Teal Pastel */
+        /* 6. Análisis Socioeconómico Barrios - Turquesa Teal */
         .card-socioeco {
             background-color: #f0fdfa;
             border-color: #99f6e4;
@@ -167,18 +167,27 @@
         .card-socioeco .card-link { background-color: #ccfbf1; color: #0d9488; }
         .card-socioeco .card-link:hover { background-color: #0d9488; color: #ffffff; }
 
+        /* 7. Análisis Socioeconómico Manzanas - Rosa Magenta */
+        .card-manzanas {
+            background-color: #fdf2f8;
+            border-color: #fbcfe8;
+        }
+        .card-manzanas h2 { color: #be185d; }
+        .card-manzanas .card-link { background-color: #fce7f3; color: #db2777; }
+        .card-manzanas .card-link:hover { background-color: #db2777; color: #ffffff; }
+
         /* Pie de página */
         footer {
             background-color: #f1f5f9;
             color: #64748b;
             text-align: center;
-            padding: 0.75rem;
+            padding: 0.65rem;
             border-top: 1px solid #e2e8f0;
         }
 
         footer p {
             margin: 0;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
         }
         
         .developer-name {
@@ -188,14 +197,14 @@
 
         /* Adaptación para pantallas pequeñas */
         @media (max-height: 700px) {
-            header { padding: 0.7rem 1rem; }
-            header h1 { font-size: 1.25rem; }
-            .card { padding: 0.85rem; }
-            .card p { font-size: 0.76rem; margin-bottom: 0.5rem; }
-            .flex-container { gap: 0.8rem; }
+            header { padding: 0.6rem 1rem; }
+            header h1 { font-size: 1.2rem; }
+            .card { padding: 0.75rem; }
+            .card p { font-size: 0.75rem; margin-bottom: 0.5rem; }
+            .flex-container { gap: 0.7rem; }
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             html, body { overflow: auto; height: auto; }
             .card { width: 100%; }
         }
@@ -251,6 +260,13 @@
                 <h2>Análisis Socioeconómico</h2>
                 <p>Estudio y evaluación socioeconómica a nivel de barrios.</p>
                 <a href="https://viquezr-dev.github.io/analisis_SE/" class="card-link" target="_blank">Ver Análisis</a>
+            </div>
+
+            <!-- Tarjeta 7 (Rosa Magenta Pastel) -->
+            <div class="card card-manzanas">
+                <h2>Análisis por Manzanas</h2>
+                <p>Estudio y análisis socioeconómico detallado a nivel de manzanas.</p>
+                <a href="https://viquezr-dev.github.io/analisis_SE_manz/" class="card-link" target="_blank">Ver Manzanas</a>
             </div>
 
         </div>

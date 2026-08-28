@@ -63,7 +63,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 0.9rem;
-            max-width: 1150px;
+            max-width: 1250px;
             width: 100%;
         }
 
@@ -77,7 +77,8 @@
             flex-direction: column;
             border: 1px solid transparent;
             width: calc(25% - 0.9rem); /* 4 por fila en pantallas anchas */
-            min-width: 230px;
+            min-width: 220px;
+            flex: 1 1 200px;
         }
 
         .card:hover {
@@ -176,6 +177,15 @@
         .card-manzanas .card-link { background-color: #fce7f3; color: #db2777; }
         .card-manzanas .card-link:hover { background-color: #db2777; color: #ffffff; }
 
+        /* 8. Datos Censo 2023 - Ciruela / Púrpura Oscuro */
+        .card-censo {
+            background-color: #faf5ff;
+            border-color: #d8b4fe;
+        }
+        .card-censo h2 { color: #6b21a8; }
+        .card-censo .card-link { background-color: #f3e8ff; color: #7e22ce; }
+        .card-censo .card-link:hover { background-color: #7e22ce; color: #ffffff; }
+
         /* Pie de página */
         footer {
             background-color: #f1f5f9;
@@ -206,7 +216,7 @@
 
         @media (max-width: 900px) {
             html, body { overflow: auto; height: auto; }
-            .card { width: 100%; }
+            .card { width: 100%; max-width: 350px; flex: 1 1 auto; }
         }
     </style>
 </head>
@@ -267,6 +277,13 @@
                 <h2>Análisis por Manzanas</h2>
                 <p>Estudio y análisis socioeconómico detallado a nivel de manzanas.</p>
                 <a href="https://viquezr-dev.github.io/analisis_SE_manz/" class="card-link" target="_blank">Ver Manzanas</a>
+            </div>
+
+            <!-- Tarjeta 8 (NUEVA - Ciruela / Púrpura Oscuro) -->
+            <div class="card card-censo">
+                <h2>Explorador de Datos del Censo 2023</h2>
+                <p>Explora provincias, distritos, corregimientos, poblados y barrios de Panamá.</p>
+                <a href="https://viquezr-dev.github.io/DATOS_CENSO_2023/" class="card-link" target="_blank">Explorar Censo</a>
             </div>
 
         </div>

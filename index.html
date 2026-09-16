@@ -33,7 +33,7 @@
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             color: #1e293b;
             text-align: center;
-            padding: 0.9rem 1rem;
+            padding: 0.8rem 1rem 0.75rem;
             border-bottom: 1px solid #cbd5e1;
         }
 
@@ -49,6 +49,39 @@
             color: #64748b;
         }
 
+        /* --- Pestañas PC / Móvil --- */
+        .tabs {
+            display: inline-flex;
+            gap: 0.25rem;
+            margin-top: 0.65rem;
+            background-color: #dbe2ea;
+            padding: 0.22rem;
+            border-radius: 999px;
+        }
+
+        .tab {
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            padding: 0.4rem 1.15rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tab:hover {
+            color: #334155;
+        }
+
+        .tab.active {
+            background-color: #ffffff;
+            color: #0f172a;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.14);
+        }
+
         /* Contenedor Principal */
         main {
             flex: 1;
@@ -58,10 +91,22 @@
             padding: 0.8rem 1rem;
         }
 
+        /* Paneles (PC / Móvil) */
+        .panel {
+            display: none;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .panel.active {
+            display: flex;
+        }
+
         .flex-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: stretch;
             gap: 0.9rem;
             max-width: 1250px;
             width: 100%;
@@ -98,6 +143,21 @@
             color: #475569;
             font-size: 0.78rem;
             flex-grow: 1;
+        }
+
+        /* Etiqueta de versión móvil */
+        .tag {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            margin-bottom: 0.45rem;
+            background-color: rgba(15, 23, 42, 0.07);
+            color: #475569;
         }
 
         /* Estilo base de los botones */
@@ -199,7 +259,7 @@
             margin: 0;
             font-size: 0.82rem;
         }
-        
+
         .developer-name {
             font-weight: 600;
             color: #334155;
@@ -207,8 +267,10 @@
 
         /* Adaptación para pantallas pequeñas */
         @media (max-height: 700px) {
-            header { padding: 0.6rem 1rem; }
+            header { padding: 0.55rem 1rem; }
             header h1 { font-size: 1.2rem; }
+            .tabs { margin-top: 0.5rem; }
+            .tab { padding: 0.32rem 0.95rem; font-size: 0.76rem; }
             .card { padding: 0.75rem; }
             .card p { font-size: 0.75rem; margin-bottom: 0.5rem; }
             .flex-container { gap: 0.7rem; }
@@ -225,73 +287,144 @@
     <header>
         <h1>Directorio de Proyectos</h1>
         <p>Herramientas y Sistemas de Panamá</p>
+
+        <!-- Selector de versión: PC / Móvil -->
+        <div class="tabs" role="tablist">
+            <button class="tab active" data-target="panel-pc" role="tab" aria-selected="true">Consultas PC</button>
+            <button class="tab" data-target="panel-movil" role="tab" aria-selected="false">Consultas Móvil</button>
+        </div>
     </header>
 
     <main>
-        <div class="flex-container">
-            
-            <!-- Tarjeta 1 (Azul Cielo) -->
-            <div class="card card-postal-gen">
-                <h2>Generador de Códigos Postales</h2>
-                <p>Generación y consulta de códigos postales nacionales.</p>
-                <a href="https://viquezr-dev.github.io/panama-GEN/" class="card-link" target="_blank">Ir al Generador</a>
-            </div>
 
-            <!-- Tarjeta 2 (Ámbar) -->
-            <div class="card card-postal-sys">
-                <h2>Sistemas Postales de Panamá</h2>
-                <p>Gestión y visualización de la red postal panameña.</p>
-                <a href="https://viquezr-dev.github.io/codigos_postales/" class="card-link" target="_blank">Ver Sistema</a>
-            </div>
+        <!-- ================= PANEL PC ================= -->
+        <div class="panel active" id="panel-pc">
+            <div class="flex-container">
 
-            <!-- Tarjeta 3 (Verde Menta) -->
-            <div class="card card-edu">
-                <h2>Centros Educativos de Panamá</h2>
-                <p>Ubicación espacial del directorio de centros educativos.</p>
-                <a href="https://viquezr-dev.github.io/antenas_panama/" class="card-link" target="_blank">Explorar Centros</a>
-            </div>
+                <!-- Tarjeta 1 (Azul Cielo) -->
+                <div class="card card-postal-gen">
+                    <h2>Generador de Códigos Postales</h2>
+                    <p>Generación y consulta de códigos postales nacionales.</p>
+                    <a href="https://viquezr-dev.github.io/panama-GEN/" class="card-link" target="_blank" rel="noopener">Ir al Generador</a>
+                </div>
 
-            <!-- Tarjeta 4 (Lavanda) -->
-            <div class="card card-upm">
-                <h2>Seguimiento a UPM-EML</h2>
-                <p>Control y seguimiento del proyecto UPM-EML 2026.</p>
-                <a href="https://viquezr-dev.github.io/UPM_2026/" class="card-link" target="_blank">Ver Seguimiento</a>
-            </div>
+                <!-- Tarjeta 2 (Ámbar) -->
+                <div class="card card-postal-sys">
+                    <h2>Sistemas Postales de Panamá</h2>
+                    <p>Gestión y visualización de la red postal panameña.</p>
+                    <a href="https://viquezr-dev.github.io/codigos_postales/" class="card-link" target="_blank" rel="noopener">Ver Sistema</a>
+                </div>
 
-            <!-- Tarjeta 5 (Coral) -->
-            <div class="card card-territorio">
-                <h2>Datos Territoriales de Panamá</h2>
-                <p>Plataforma de mapas y ordenamiento territorial.</p>
-                <a href="https://viquezr-dev.github.io/panama_territorio/index.html" class="card-link" target="_blank">Consultar Datos</a>
-            </div>
+                <!-- Tarjeta 3 (Verde Menta) -->
+                <div class="card card-edu">
+                    <h2>Centros Educativos de Panamá</h2>
+                    <p>Ubicación espacial del directorio de centros educativos.</p>
+                    <a href="https://viquezr-dev.github.io/antenas_panama/" class="card-link" target="_blank" rel="noopener">Explorar Centros</a>
+                </div>
 
-            <!-- Tarjeta 6 (Turquesa Pastel) -->
-            <div class="card card-socioeco">
-                <h2>Análisis Socioeconómico</h2>
-                <p>Estudio y evaluación socioeconómica a nivel de barrios.</p>
-                <a href="https://viquezr-dev.github.io/analisis_SE/" class="card-link" target="_blank">Ver Análisis</a>
-            </div>
+                <!-- Tarjeta 4 (Lavanda) -->
+                <div class="card card-upm">
+                    <h2>Seguimiento a UPM-EML</h2>
+                    <p>Control y seguimiento del proyecto UPM-EML 2026.</p>
+                    <a href="https://viquezr-dev.github.io/UPM_2026/" class="card-link" target="_blank" rel="noopener">Ver Seguimiento</a>
+                </div>
 
-            <!-- Tarjeta 7 (Rosa Magenta Pastel) -->
-            <div class="card card-manzanas">
-                <h2>Análisis por Manzanas</h2>
-                <p>Estudio y análisis socioeconómico detallado a nivel de manzanas.</p>
-                <a href="https://viquezr-dev.github.io/analisis_SE_manz/" class="card-link" target="_blank">Ver Manzanas</a>
-            </div>
+                <!-- Tarjeta 5 (Coral) -->
+                <div class="card card-territorio">
+                    <h2>Datos Territoriales de Panamá</h2>
+                    <p>Plataforma de mapas y ordenamiento territorial.</p>
+                    <a href="https://viquezr-dev.github.io/panama_territorio/index.html" class="card-link" target="_blank" rel="noopener">Consultar Datos</a>
+                </div>
 
-            <!-- Tarjeta 8 (NUEVA - Ciruela / Púrpura Oscuro) -->
-            <div class="card card-censo">
-                <h2>Explorador de Datos del Censo 2023</h2>
-                <p>Explora provincias, distritos, corregimientos, poblados y barrios de Panamá.</p>
-                <a href="https://viquezr-dev.github.io/DATOS_CENSO_2023/" class="card-link" target="_blank">Explorar Censo</a>
-            </div>
+                <!-- Tarjeta 6 (Turquesa Pastel) -->
+                <div class="card card-socioeco">
+                    <h2>Análisis Socioeconómico</h2>
+                    <p>Estudio y evaluación socioeconómica a nivel de barrios.</p>
+                    <a href="https://viquezr-dev.github.io/analisis_SE/" class="card-link" target="_blank" rel="noopener">Ver Análisis</a>
+                </div>
 
+                <!-- Tarjeta 7 (Rosa Magenta Pastel) -->
+                <div class="card card-manzanas">
+                    <h2>Análisis por Manzanas</h2>
+                    <p>Estudio y análisis socioeconómico detallado a nivel de manzanas.</p>
+                    <a href="https://viquezr-dev.github.io/analisis_SE_manz/" class="card-link" target="_blank" rel="noopener">Ver Manzanas</a>
+                </div>
+
+                <!-- Tarjeta 8 (Ciruela / Púrpura Oscuro) -->
+                <div class="card card-censo">
+                    <h2>Explorador de Datos del Censo 2023</h2>
+                    <p>Explora provincias, distritos, corregimientos, poblados y barrios de Panamá.</p>
+                    <a href="https://viquezr-dev.github.io/DATOS_CENSO_2023/" class="card-link" target="_blank" rel="noopener">Explorar Censo</a>
+                </div>
+
+            </div>
         </div>
+
+        <!-- ================= PANEL MÓVIL ================= -->
+        <div class="panel" id="panel-movil">
+            <div class="flex-container">
+
+                <!-- Móvil 1 (Azul Cielo) -->
+                <div class="card card-postal-gen">
+                    <span class="tag">Versión móvil</span>
+                    <h2>Generador de Códigos Postales</h2>
+                    <p>Generación y consulta de códigos postales nacionales.</p>
+                    <a href="https://viquezr-dev.github.io/panama-GEN/indexC.html" class="card-link" target="_blank" rel="noopener">Ir al Generador</a>
+                </div>
+
+                <!-- Móvil 2 (Lavanda) -->
+                <div class="card card-upm">
+                    <span class="tag">Versión móvil</span>
+                    <h2>Seguimiento a UPM-EML</h2>
+                    <p>Control y seguimiento del proyecto UPM-EML 2026.</p>
+                    <a href="https://viquezr-dev.github.io/UPM_2026/indexC.html" class="card-link" target="_blank" rel="noopener">Ver Seguimiento</a>
+                </div>
+
+                <!-- Móvil 3 (Coral) -->
+                <div class="card card-territorio">
+                    <span class="tag">Versión móvil</span>
+                    <h2>Datos Territoriales de Panamá</h2>
+                    <p>Plataforma de mapas y ordenamiento territorial.</p>
+                    <a href="https://viquezr-dev.github.io/panama_territorio/indexC.html" class="card-link" target="_blank" rel="noopener">Consultar Datos</a>
+                </div>
+
+                <!-- Móvil 4 (Ciruela / Púrpura Oscuro) -->
+                <div class="card card-censo">
+                    <span class="tag">Versión móvil</span>
+                    <h2>Explorador de Datos del Censo 2023</h2>
+                    <p>Explora provincias, distritos, corregimientos, poblados y barrios de Panamá.</p>
+                    <a href="https://viquezr-dev.github.io/DATOS_CENSO_2023/indexC.html" class="card-link" target="_blank" rel="noopener">Explorar Censo</a>
+                </div>
+
+            </div>
+        </div>
+
     </main>
 
     <footer>
         <p>Diseñado y desarrollado por: <span class="developer-name">Raúl Víquez</span> &copy; 2026</p>
     </footer>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Desactivar todo
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                panels.forEach(p => p.classList.remove('active'));
+
+                // Activar la pestaña seleccionada
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+    </script>
 
 </body>
 </html>

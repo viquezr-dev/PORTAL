@@ -89,6 +89,7 @@
             align-items: center;
             justify-content: center;
             padding: 0.8rem 1rem;
+            overflow: hidden;
         }
 
         /* Paneles (PC / Móvil) */
@@ -108,7 +109,7 @@
             justify-content: center;
             align-items: stretch;
             gap: 0.9rem;
-            max-width: 1250px;
+            max-width: 1150px;
             width: 100%;
         }
 
@@ -121,9 +122,10 @@
             display: flex;
             flex-direction: column;
             border: 1px solid transparent;
-            width: calc(25% - 0.9rem); /* 4 por fila en pantallas anchas */
+            /* 3 por fila en pantallas anchas: (100% - 2 gaps de 0.9rem) / 3 */
+            width: calc(33.333% - 0.6rem);
             min-width: 220px;
-            flex: 1 1 200px;
+            flex: 1 1 240px;
         }
 
         .card:hover {
@@ -246,6 +248,15 @@
         .card-censo .card-link { background-color: #f3e8ff; color: #7e22ce; }
         .card-censo .card-link:hover { background-color: #7e22ce; color: #ffffff; }
 
+        /* 9. Potencial de Mercado Gastronómico - Naranja Pastel */
+        .card-gastro {
+            background-color: #fff7ed;
+            border-color: #fed7aa;
+        }
+        .card-gastro h2 { color: #c2410c; }
+        .card-gastro .card-link { background-color: #ffedd5; color: #ea580c; }
+        .card-gastro .card-link:hover { background-color: #ea580c; color: #ffffff; }
+
         /* Pie de página */
         footer {
             background-color: #f1f5f9;
@@ -278,6 +289,7 @@
 
         @media (max-width: 900px) {
             html, body { overflow: auto; height: auto; }
+            main { overflow: visible; }
             .card { width: 100%; max-width: 350px; flex: 1 1 auto; }
         }
     </style>
@@ -297,7 +309,7 @@
 
     <main>
 
-        <!-- ================= PANEL PC ================= -->
+        <!-- ================= PANEL PC (9 tarjetas: 3x3) ================= -->
         <div class="panel active" id="panel-pc">
             <div class="flex-container">
 
@@ -355,6 +367,13 @@
                     <h2>Explorador de Datos del Censo 2023</h2>
                     <p>Explora provincias, distritos, corregimientos, poblados y barrios de Panamá.</p>
                     <a href="https://viquezr-dev.github.io/DATOS_CENSO_2023/" class="card-link" target="_blank" rel="noopener">Explorar Censo</a>
+                </div>
+
+                <!-- Tarjeta 9 (Naranja Pastel - NUEVA) -->
+                <div class="card card-gastro">
+                    <h2>Potencial de Mercado Gastronómico</h2>
+                    <p>Análisis del potencial de mercado para el sector gastronómico en Panamá.</p>
+                    <a href="https://viquezr-dev.github.io/restaurantes/" class="card-link" target="_blank" rel="noopener">Ver Potencial</a>
                 </div>
 
             </div>

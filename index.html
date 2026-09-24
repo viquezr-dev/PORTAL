@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio de Proyectos | Raúl Víquez</title>
-    <!-- Importar fuente de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
         }
 
-        /* Pantalla completa sin barra de desplazamiento en escritorio */
         html, body {
             height: 100vh;
             margin: 0;
@@ -72,9 +70,7 @@
             transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .tab:hover {
-            color: #334155;
-        }
+        .tab:hover { color: #334155; }
 
         .tab.active {
             background-color: #ffffff;
@@ -88,11 +84,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.8rem 1rem;
+            padding: 1rem;
             overflow: hidden;
         }
 
-        /* Paneles (PC / Móvil) */
+        /* Paneles */
         .panel {
             display: none;
             width: 100%;
@@ -103,29 +99,36 @@
             display: flex;
         }
 
-        .flex-container {
-            display: flex;
-            flex-wrap: wrap;
+        /* --- GRID CENTRADO --- */
+        .grid-container {
+            display: grid;
+            gap: 1rem;
             justify-content: center;
-            align-items: stretch;
-            gap: 0.9rem;
-            max-width: 1150px;
+            margin: 0 auto;
             width: 100%;
+        }
+
+        /* PC: 3 columnas x 3 filas */
+        #panel-pc .grid-container {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            max-width: 1000px;
+        }
+
+        /* Móvil: 2 columnas x 2 filas */
+        #panel-movil .grid-container {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            max-width: 720px;
         }
 
         /* Estilos base de las Tarjetas */
         .card {
             border-radius: 12px;
-            padding: 0.95rem;
+            padding: 1rem;
             box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.03);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
             border: 1px solid transparent;
-            /* 3 por fila en pantallas anchas: (100% - 2 gaps de 0.9rem) / 3 */
-            width: calc(33.333% - 0.6rem);
-            min-width: 220px;
-            flex: 1 1 240px;
         }
 
         .card:hover {
@@ -135,19 +138,19 @@
 
         .card h2 {
             margin-top: 0;
-            font-size: 0.98rem;
-            margin-bottom: 0.35rem;
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
         }
 
         .card p {
-            margin: 0 0 0.8rem 0;
-            line-height: 1.35;
+            margin: 0 0 0.9rem 0;
+            line-height: 1.4;
             color: #475569;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             flex-grow: 1;
         }
 
-        /* Etiqueta de versión móvil */
+        /* Etiqueta versión móvil */
         .tag {
             display: inline-block;
             align-self: flex-start;
@@ -157,102 +160,66 @@
             text-transform: uppercase;
             padding: 0.15rem 0.5rem;
             border-radius: 999px;
-            margin-bottom: 0.45rem;
+            margin-bottom: 0.5rem;
             background-color: rgba(15, 23, 42, 0.07);
             color: #475569;
         }
 
-        /* Estilo base de los botones */
+        /* Botones */
         .card-link {
             display: block;
             text-align: center;
-            padding: 0.48rem 0.8rem;
+            padding: 0.5rem 0.8rem;
             text-decoration: none;
             border-radius: 7px;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 600;
             transition: background-color 0.2s, color 0.2s;
         }
 
         /* --- COLORES PASTEL POR TEMÁTICA --- */
 
-        /* 1. Códigos Postales - Azul Cielo */
-        .card-postal-gen {
-            background-color: #f0f9ff;
-            border-color: #bae6fd;
-        }
+        .card-postal-gen { background-color: #f0f9ff; border-color: #bae6fd; }
         .card-postal-gen h2 { color: #0369a1; }
         .card-postal-gen .card-link { background-color: #e0f2fe; color: #0284c7; }
         .card-postal-gen .card-link:hover { background-color: #0284c7; color: #ffffff; }
 
-        /* 2. Sistemas Postales - Ámbar / Melocotón */
-        .card-postal-sys {
-            background-color: #fffbeb;
-            border-color: #fde68a;
-        }
+        .card-postal-sys { background-color: #fffbeb; border-color: #fde68a; }
         .card-postal-sys h2 { color: #b45309; }
         .card-postal-sys .card-link { background-color: #fef3c7; color: #d97706; }
         .card-postal-sys .card-link:hover { background-color: #d97706; color: #ffffff; }
 
-        /* 3. Centros Educativos - Verde Menta */
-        .card-edu {
-            background-color: #f0fdf4;
-            border-color: #bbf7d0;
-        }
+        .card-edu { background-color: #f0fdf4; border-color: #bbf7d0; }
         .card-edu h2 { color: #15803d; }
         .card-edu .card-link { background-color: #dcfce7; color: #16a34a; }
         .card-edu .card-link:hover { background-color: #16a34a; color: #ffffff; }
 
-        /* 4. UPM-EML - Lavanda / Violeta */
-        .card-upm {
-            background-color: #faf5ff;
-            border-color: #e9d5ff;
-        }
+        .card-upm { background-color: #faf5ff; border-color: #e9d5ff; }
         .card-upm h2 { color: #6b21a8; }
         .card-upm .card-link { background-color: #f3e8ff; color: #7e22ce; }
         .card-upm .card-link:hover { background-color: #7e22ce; color: #ffffff; }
 
-        /* 5. Datos Territoriales - Coral / Terracota */
-        .card-territorio {
-            background-color: #fff1f2;
-            border-color: #fecdd3;
-        }
+        .card-territorio { background-color: #fff1f2; border-color: #fecdd3; }
         .card-territorio h2 { color: #be123c; }
         .card-territorio .card-link { background-color: #ffe4e6; color: #e11d48; }
         .card-territorio .card-link:hover { background-color: #e11d48; color: #ffffff; }
 
-        /* 6. Análisis Socioeconómico Barrios - Turquesa Teal */
-        .card-socioeco {
-            background-color: #f0fdfa;
-            border-color: #99f6e4;
-        }
+        .card-socioeco { background-color: #f0fdfa; border-color: #99f6e4; }
         .card-socioeco h2 { color: #0f766e; }
         .card-socioeco .card-link { background-color: #ccfbf1; color: #0d9488; }
         .card-socioeco .card-link:hover { background-color: #0d9488; color: #ffffff; }
 
-        /* 7. Análisis Socioeconómico Manzanas - Rosa Magenta */
-        .card-manzanas {
-            background-color: #fdf2f8;
-            border-color: #fbcfe8;
-        }
+        .card-manzanas { background-color: #fdf2f8; border-color: #fbcfe8; }
         .card-manzanas h2 { color: #be185d; }
         .card-manzanas .card-link { background-color: #fce7f3; color: #db2777; }
         .card-manzanas .card-link:hover { background-color: #db2777; color: #ffffff; }
 
-        /* 8. Datos Censo 2023 - Ciruela / Púrpura Oscuro */
-        .card-censo {
-            background-color: #faf5ff;
-            border-color: #d8b4fe;
-        }
+        .card-censo { background-color: #faf5ff; border-color: #d8b4fe; }
         .card-censo h2 { color: #6b21a8; }
         .card-censo .card-link { background-color: #f3e8ff; color: #7e22ce; }
         .card-censo .card-link:hover { background-color: #7e22ce; color: #ffffff; }
 
-        /* 9. Potencial de Mercado Gastronómico - Naranja Pastel */
-        .card-gastro {
-            background-color: #fff7ed;
-            border-color: #fed7aa;
-        }
+        .card-gastro { background-color: #fff7ed; border-color: #fed7aa; }
         .card-gastro h2 { color: #c2410c; }
         .card-gastro .card-link { background-color: #ffedd5; color: #ea580c; }
         .card-gastro .card-link:hover { background-color: #ea580c; color: #ffffff; }
@@ -266,31 +233,37 @@
             border-top: 1px solid #e2e8f0;
         }
 
-        footer p {
-            margin: 0;
-            font-size: 0.82rem;
-        }
+        footer p { margin: 0; font-size: 0.82rem; }
 
-        .developer-name {
-            font-weight: 600;
-            color: #334155;
-        }
+        .developer-name { font-weight: 600; color: #334155; }
 
-        /* Adaptación para pantallas pequeñas */
-        @media (max-height: 700px) {
-            header { padding: 0.55rem 1rem; }
-            header h1 { font-size: 1.2rem; }
-            .tabs { margin-top: 0.5rem; }
-            .tab { padding: 0.32rem 0.95rem; font-size: 0.76rem; }
+        /* Adaptación pantallas bajas */
+        @media (max-height: 720px) {
+            header { padding: 0.5rem 1rem; }
+            header h1 { font-size: 1.15rem; }
+            header p { font-size: 0.75rem; }
+            .tabs { margin-top: 0.45rem; }
+            .tab { padding: 0.3rem 0.95rem; font-size: 0.75rem; }
             .card { padding: 0.75rem; }
-            .card p { font-size: 0.75rem; margin-bottom: 0.5rem; }
-            .flex-container { gap: 0.7rem; }
+            .card h2 { font-size: 0.9rem; }
+            .card p { font-size: 0.73rem; margin-bottom: 0.55rem; }
+            .card-link { padding: 0.4rem 0.7rem; font-size: 0.74rem; }
+            .grid-container { gap: 0.75rem; }
         }
 
+        /* Adaptación móvil / tablet */
         @media (max-width: 900px) {
             html, body { overflow: auto; height: auto; }
             main { overflow: visible; }
-            .card { width: 100%; max-width: 350px; flex: 1 1 auto; }
+            #panel-pc .grid-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 560px) {
+            #panel-pc .grid-container,
+            #panel-movil .grid-container {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+            }
         }
     </style>
 </head>
@@ -300,7 +273,6 @@
         <h1>Directorio de Proyectos</h1>
         <p>Herramientas y Sistemas de Panamá</p>
 
-        <!-- Selector de versión: PC / Móvil -->
         <div class="tabs" role="tablist">
             <button class="tab active" data-target="panel-pc" role="tab" aria-selected="true">Consultas PC</button>
             <button class="tab" data-target="panel-movil" role="tab" aria-selected="false">Consultas Móvil</button>
@@ -309,67 +281,58 @@
 
     <main>
 
-        <!-- ================= PANEL PC (9 tarjetas: 3x3) ================= -->
+        <!-- ================= PANEL PC (3x3) ================= -->
         <div class="panel active" id="panel-pc">
-            <div class="flex-container">
+            <div class="grid-container">
 
-                <!-- Tarjeta 1 (Azul Cielo) -->
                 <div class="card card-postal-gen">
                     <h2>Generador de Códigos Postales</h2>
                     <p>Generación y consulta de códigos postales nacionales.</p>
                     <a href="https://viquezr-dev.github.io/panama-GEN/" class="card-link" target="_blank" rel="noopener">Ir al Generador</a>
                 </div>
 
-                <!-- Tarjeta 2 (Ámbar) -->
                 <div class="card card-postal-sys">
                     <h2>Sistemas Postales de Panamá</h2>
                     <p>Gestión y visualización de la red postal panameña.</p>
                     <a href="https://viquezr-dev.github.io/codigos_postales/" class="card-link" target="_blank" rel="noopener">Ver Sistema</a>
                 </div>
 
-                <!-- Tarjeta 3 (Verde Menta) -->
                 <div class="card card-edu">
                     <h2>Centros Educativos de Panamá</h2>
                     <p>Ubicación espacial del directorio de centros educativos.</p>
                     <a href="https://viquezr-dev.github.io/antenas_panama/" class="card-link" target="_blank" rel="noopener">Explorar Centros</a>
                 </div>
 
-                <!-- Tarjeta 4 (Lavanda) -->
                 <div class="card card-upm">
                     <h2>Seguimiento a UPM-EML</h2>
                     <p>Control y seguimiento del proyecto UPM-EML 2026.</p>
                     <a href="https://viquezr-dev.github.io/UPM_2026/" class="card-link" target="_blank" rel="noopener">Ver Seguimiento</a>
                 </div>
 
-                <!-- Tarjeta 5 (Coral) -->
                 <div class="card card-territorio">
                     <h2>Datos Territoriales de Panamá</h2>
                     <p>Plataforma de mapas y ordenamiento territorial.</p>
                     <a href="https://viquezr-dev.github.io/panama_territorio/index.html" class="card-link" target="_blank" rel="noopener">Consultar Datos</a>
                 </div>
 
-                <!-- Tarjeta 6 (Turquesa Pastel) -->
                 <div class="card card-socioeco">
                     <h2>Análisis Socioeconómico</h2>
                     <p>Estudio y evaluación socioeconómica a nivel de barrios.</p>
                     <a href="https://viquezr-dev.github.io/analisis_SE/" class="card-link" target="_blank" rel="noopener">Ver Análisis</a>
                 </div>
 
-                <!-- Tarjeta 7 (Rosa Magenta Pastel) -->
                 <div class="card card-manzanas">
                     <h2>Análisis por Manzanas</h2>
                     <p>Estudio y análisis socioeconómico detallado a nivel de manzanas.</p>
                     <a href="https://viquezr-dev.github.io/analisis_SE_manz/" class="card-link" target="_blank" rel="noopener">Ver Manzanas</a>
                 </div>
 
-                <!-- Tarjeta 8 (Ciruela / Púrpura Oscuro) -->
                 <div class="card card-censo">
                     <h2>Explorador de Datos del Censo 2023</h2>
                     <p>Explora provincias, distritos, corregimientos, poblados y barrios de Panamá.</p>
                     <a href="https://viquezr-dev.github.io/DATOS_CENSO_2023/" class="card-link" target="_blank" rel="noopener">Explorar Censo</a>
                 </div>
 
-                <!-- Tarjeta 9 (Naranja Pastel - NUEVA) -->
                 <div class="card card-gastro">
                     <h2>Potencial de Mercado Gastronómico</h2>
                     <p>Análisis del potencial de mercado para el sector gastronómico en Panamá.</p>
@@ -379,11 +342,10 @@
             </div>
         </div>
 
-        <!-- ================= PANEL MÓVIL ================= -->
+        <!-- ================= PANEL MÓVIL (2x2) ================= -->
         <div class="panel" id="panel-movil">
-            <div class="flex-container">
+            <div class="grid-container">
 
-                <!-- Móvil 1 (Azul Cielo) -->
                 <div class="card card-postal-gen">
                     <span class="tag">Versión móvil</span>
                     <h2>Generador de Códigos Postales</h2>
@@ -391,7 +353,6 @@
                     <a href="https://viquezr-dev.github.io/panama-GEN/indexC.html" class="card-link" target="_blank" rel="noopener">Ir al Generador</a>
                 </div>
 
-                <!-- Móvil 2 (Lavanda) -->
                 <div class="card card-upm">
                     <span class="tag">Versión móvil</span>
                     <h2>Seguimiento a UPM-EML</h2>
@@ -399,7 +360,6 @@
                     <a href="https://viquezr-dev.github.io/UPM_2026/indexC.html" class="card-link" target="_blank" rel="noopener">Ver Seguimiento</a>
                 </div>
 
-                <!-- Móvil 3 (Coral) -->
                 <div class="card card-territorio">
                     <span class="tag">Versión móvil</span>
                     <h2>Datos Territoriales de Panamá</h2>
@@ -407,7 +367,6 @@
                     <a href="https://viquezr-dev.github.io/panama_territorio/indexC.html" class="card-link" target="_blank" rel="noopener">Consultar Datos</a>
                 </div>
 
-                <!-- Móvil 4 (Ciruela / Púrpura Oscuro) -->
                 <div class="card card-censo">
                     <span class="tag">Versión móvil</span>
                     <h2>Explorador de Datos del Censo 2023</h2>
@@ -430,14 +389,12 @@
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                // Desactivar todo
                 tabs.forEach(t => {
                     t.classList.remove('active');
                     t.setAttribute('aria-selected', 'false');
                 });
                 panels.forEach(p => p.classList.remove('active'));
 
-                // Activar la pestaña seleccionada
                 tab.classList.add('active');
                 tab.setAttribute('aria-selected', 'true');
                 document.getElementById(tab.dataset.target).classList.add('active');
